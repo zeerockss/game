@@ -1,3 +1,6 @@
+from util import directions
+
+
 class Room():
     """
     A room class for the rooms in the game.
@@ -13,25 +16,21 @@ class Room():
         self.monsters = list()
 
     def __str__(self):
-        if self.has_items():
-            s_if = 's' if len(self.items) > 1 else ''
-            print(f'Item{s_if} in {self.name}')
-            for item in items:
-                print(f'{item.name}: {item.description}')
-            print()
-        if self.has_monsters():
-            for monster in self.monsters:
-                print(f'A {monster.name} is in the room!')
+        return f'{self.name}'
+
+    def add_item(self, item):
+        self.items.append(item)
 
     def get_exits(self):
-        return [direction for direction in self.directions.keys()]
+        return [f'{direction}: {room}' for direction, room in self.directions.items() if room is not None]
 
     def connect(self, direction, connecting_room):
         if direction not in connecting_room.directions:
             print("INVALID ROOM CONNECTION")
             return None
         else:
-            connecting_room.direction[direction] = self
+            self.directions[direction] = connecting_room
+            connecting_room.directions[directions[direction]['invert']] = self
 
     def get_room(self, direction):
         if direction not in self.directions:
@@ -45,3 +44,18 @@ class Room():
 
     def has_monsters(self):
         return len(self.monsters) > 0
+
+    def print_contents(self):
+        if self.has_items():
+            s_if = 's' if len(self.items) > 1 else ''
+            print(f'Item{s_if} in {self.name}: ' + '{')
+            for item in self.items:
+                print(f'\t"{item.name}": "{item.description}",')
+            print('}')
+        if self.has_monsters():
+            print()
+            for monster in self.monsters:
+                print(f'A {monster.name} is in the room!\n')
+            print()
+        if not self.has_items() and not self.has_monsters():
+            print('There are no items here.')

@@ -30,3 +30,23 @@ class Queue():
             return self.storage.pop(0)
         else:
             return None
+
+
+directions = {
+    'n': {
+        'invert': 's',
+        'name': 'North'
+    },
+    's': {
+        'invert': 'n',
+        'name': 'South'
+    },
+    'e': {
+        'invert': 'w',
+        'name': 'East'
+    },
+    'w': {
+        'invert': 'e',
+        'name': 'West'
+    }
+}
