@@ -1,5 +1,5 @@
-from Player import Player
-from initial_rooms import initial_rooms
+from classes.Player import Player
+from initial_rooms import rooms
 
 intro_text = [
     '''You have been travelling for hours. Your mother is taking you to a scrapyard to buy 
@@ -10,4 +10,6 @@ intro_commands = {}
 
 
 def intro():
-    player = Player(initial_rooms['intro'])
+    player = Player(rooms['intro'])
+
+    return player

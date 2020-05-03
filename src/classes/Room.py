@@ -1,4 +1,4 @@
-from util import directions
+from util import directions, printype
 
 
 class Room():
@@ -26,7 +26,7 @@ class Room():
 
     def connect(self, direction, connecting_room):
         if direction not in connecting_room.directions:
-            print("INVALID ROOM CONNECTION")
+            printype("INVALID ROOM CONNECTION")
             return None
         else:
             self.directions[direction] = connecting_room
@@ -34,7 +34,7 @@ class Room():
 
     def get_room(self, direction):
         if direction not in self.directions:
-            print("INVALID ROOM CONNECTION")
+            printype("INVALID ROOM CONNECTION")
             return None
         else:
             return self.directions[direction]
@@ -48,14 +48,14 @@ class Room():
     def print_contents(self):
         if self.has_items():
             s_if = 's' if len(self.items) > 1 else ''
-            print(f'Item{s_if} in {self.name}: ' + '{')
-            for item in self.items:
-                print(f'\t"{item.name}": "{item.description}",')
-            print('}')
-        if self.has_monsters():
+            printype(f'Item{s_if} in {self.name}: ')
+            for index, item in enumerate(self.items):
+                notLast = index + 1 != len(self.items)
+                printype(f'\t{item.name}: {item.description}', notLast)
             print()
+        if self.has_monsters():
             for monster in self.monsters:
-                print(f'A {monster.name} is in the room!\n')
+                printype(f'A {monster.name} is in the room!\n')
             print()
         if not self.has_items() and not self.has_monsters():
-            print('There are no items here.')
+            printype('There are no items here.')

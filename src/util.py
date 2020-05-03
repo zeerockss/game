@@ -1,3 +1,7 @@
+from sys import stdout
+from time import sleep
+
+
 class Stack():
     def __init__(self):
         self.storage = []
@@ -50,3 +54,12 @@ directions = {
         'name': 'West'
     }
 }
+
+
+def printype(output, new_line=True):
+    for letter in output:
+        stdout.write(letter)
+        stdout.flush()
+        sleep(.05)
+    if new_line:
+        print()

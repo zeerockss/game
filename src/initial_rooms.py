@@ -1,10 +1,16 @@
-from Room import Room
-from items import items
+from classes.Item import Item, Food, Weapon
+from classes.Room import Room
 
-initial_rooms = {
+rooms = {
     'intro': Room('Vehicle', '''A spacious SUV. The interior is perfect; no stains, new car smell. The works.'''),
     'scrapyard1': Room('Scrapyard', '''A dirty scrapyard, filled with stacked andscattered cars. There is a
-    surprisingly short, dingy fence that surrounds the facility.''')
+    surprisingly short, dingy fence that surrounds the facility and a  rusted
+    shack that lies in the West.'''),
+    'scrapyard2': Room('Scrapyard Shack', '''Rusted metal on the inside and out, honestly disgusting.''')
 }
 
-initial_rooms['scrapyard'].add_item(items['bread'])
+items = {
+    'bread': Food(rooms['scrapyard1'], 'Bread', 'A slice of bread. It\'s not molded yet.', 1),
+    'bread': Food(rooms['scrapyard2'], 'Bread', 'A slice of bread. It\'s not molded yet.', 1),
+    'sword': (None, 'Sword', 'One of the skeletons dropped this.', 1)
+}
