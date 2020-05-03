@@ -1,6 +1,5 @@
 class Object():
-    def __init__(self, room, name):
-        self.room = room
+    def __init__(self, name):
         self.name = name
 
     def __str__(self):

@@ -10,7 +10,7 @@ rooms = {
 }
 
 items = {
-    'bread': Food(rooms['scrapyard1'], 'Bread', 'A slice of bread. It\'s not molded yet.', 1),
-    'bread': Food(rooms['scrapyard2'], 'Bread', 'A slice of bread. It\'s not molded yet.', 1),
-    'sword': (None, 'Sword', 'One of the skeletons dropped this.', 1)
+    'bread': Food('Bread', 'A slice of bread. It\'s not molded yet.', 1),
+    'bread': Food('Bread', 'A slice of bread. It\'s not molded yet.', 1),
+    'sword': ('Sword', 'One of the skeletons dropped this.', 1)
 }

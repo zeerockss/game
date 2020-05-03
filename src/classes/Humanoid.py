@@ -2,8 +2,9 @@ from classes.Object import Object
 
 
 class Humanoid(Object):
-    def __init__(self, room, name, dmg, hp):
-        super().__init__(room, name)
+    def __init__(self, name, room, dmg, hp):
+        super().__init__(name)
+        self.room = room
         self.dmg = dmg
         self.hp = hp
         self.max_hp = hp

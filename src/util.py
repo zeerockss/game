@@ -54,12 +54,3 @@ directions = {
         'name': 'West'
     }
 }
-
-
-def printype(output, new_line=True):
-    for letter in output:
-        stdout.write(letter)
-        stdout.flush()
-        sleep(.05)
-    if new_line:
-        print()

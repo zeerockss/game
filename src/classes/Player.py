@@ -1,10 +1,9 @@
 from classes.Humanoid import Humanoid
-from classes.Item import Weapon, equippable
 
 
 class Player(Humanoid):
-    def __init__(self, room, name, dmg, hp):
-        super().__init__(room, name=input('Enter your name: '), dmg=1, hp=10)
+    def __init__(self, name, room, dmg=1, hp=10):
+        super().__init__(name, room, dmg, hp)
         self.equipped = None
 
     def __str__(self):

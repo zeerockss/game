@@ -2,16 +2,11 @@ from classes.Object import Object
 
 
 class Item(Object):
-    def __init__(self, room, name, description, droppable=True):
-        super().__init__(room, name)
+    def __init__(self, name, description):
+        super().__init__(name)
         self.description = description
-        self.droppable = droppable
+        self.droppable = True
         self.equippable = False
-        if self.room:
-            self.add_to_room(room)
-
-    def add_to_room(self, room):
-        room.add_item(self)
 
     def take(self, player, room):
         player.inventory.append(self)
@@ -28,8 +23,8 @@ class Item(Object):
 
 
 class Food(Item):
-    def __init__(self, room, name, description, amount):
-        super().__init__(room, name, description)
+    def __init__(self, name, description, amount):
+        super().__init__(name, description)
         self.amount = amount
 
     def use(self, player):
@@ -42,8 +37,8 @@ class Food(Item):
 
 
 class Weapon(Item):
-    def __init__(self, room, name, description, dmg):
-        super().__init__(room, name, description)
+    def __init__(self, name, description, dmg):
+        super().__init__(name, description)
         self.dmg = dmg
         self.equippable = True
 
