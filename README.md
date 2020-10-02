@@ -1,2 +1,2 @@
 # game
-Making a game in Python
+Making an amazing and easy game in Python
